@@ -1,6 +1,7 @@
 import functools
 import pdb
 
+
 def debugger(func):
     @functools.wraps(func)
     def wrapper(*args, **kwargs):
@@ -8,11 +9,12 @@ def debugger(func):
         return func(*args, **kwargs)
     return wrapper
 
+
 if __name__ == '__main__':
     @debugger
-    def minha_funcao(x, y):
-        resultado = x + y
-        return resultado
+    def my_function(x, y):
+        result = x + y
+        return result
 
-    resultado = minha_funcao(3, 5)
-    print("Resultado:", resultado)
+    result = my_function(3, 5)
+    print("Result:", result)

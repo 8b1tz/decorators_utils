@@ -1,6 +1,7 @@
 import time
 import functools
 
+
 def cache(func):
     cache_data = {}
     fastest_duration = float('inf')
@@ -31,19 +32,21 @@ def cache(func):
 
     wrapper.get_fastest_duration = get_fastest_duration
     wrapper.get_slowest_duration = get_slowest_duration
-    
+
     return wrapper
+
 
 if __name__ == '__main__':
     @cache
     def expensive_func(x):
         start_time = time.time()
         time.sleep(2)
-        print(f"{expensive_func.__name__} ran in {time.time() - start_time:.2f} secs")
+        print(f"{expensive_func.__name__} ran in \
+              {time.time() - start_time:.2f} secs")
         return x
-    
+
     print(expensive_func(1))
     print(expensive_func(5))
 
-    print(expensive_func.get_fastest_duration(), expensive_func.get_slowest_duration())
-
+    print(expensive_func.get_fastest_duration(),
+          expensive_func.get_slowest_duration())
